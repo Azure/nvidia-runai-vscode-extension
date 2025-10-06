@@ -4,6 +4,9 @@ Manage Run:AI workloads, projects, and clusters directly from VSCode. Built for 
 
 ![Run:AI Extension](https://img.shields.io/badge/VSCode-Extension-blue) ![Version](https://img.shields.io/badge/version-0.0.1-green) ![License](https://img.shields.io/badge/license-MIT-orange)
 
+> [!NOTE]
+> This extension is currently a work in progress. The Run:AI Azure Marketplace offer will launch soon!
+
 ## 🚀 Features
 
 - ✅ **View & Manage Workloads** - Browse, submit, and delete workspaces and training jobs
@@ -13,6 +16,8 @@ Manage Run:AI workloads, projects, and clusters directly from VSCode. Built for 
 - 🔄 **Quick Refresh** - One-click updates for all views
 - 📝 **Detailed Views** - Comprehensive workload information with resource allocation
 - 🚀 **GPU Support** - Specify GPU requirements for workloads
+
+![Run AI Overview](resources/runai.png)
 
 ## 📦 Installation
 
