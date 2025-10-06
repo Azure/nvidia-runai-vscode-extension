@@ -1,0 +1,164 @@
+{
+  "name": "run-ai",
+  "displayName": "Run:AI",
+  "description": "VSCode extension for Run:AI - manage workloads, projects, and clusters",
+  "version": "0.0.1",
+  "publisher": "Govind Kamtamneni",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Azure/nvidia-runai-vscode-extension"
+  },
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Run:AI",
+      "properties": {
+        "runai.apiUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Run:AI API URL"
+        },
+        "runai.token": {
+          "type": "string",
+          "default": "",
+          "description": "Run:AI API Token"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "run-ai.configure",
+        "title": "Run:AI: Configure API Settings",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "run-ai.refreshWorkloads",
+        "title": "Run:AI: Refresh Workloads",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "run-ai.refreshProjects",
+        "title": "Run:AI: Refresh Projects",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "run-ai.refreshClusters",
+        "title": "Run:AI: Refresh Clusters",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "run-ai.submitWorkspace",
+        "title": "Run:AI: Submit Workspace",
+        "icon": "$(add)"
+      },
+      {
+        "command": "run-ai.submitTraining",
+        "title": "Run:AI: Submit Training Job",
+        "icon": "$(add)"
+      },
+      {
+        "command": "run-ai.deleteWorkload",
+        "title": "Run:AI: Delete Workload",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "run-ai.showWorkloadDetails",
+        "title": "Run:AI: Show Workload Details"
+      },
+      {
+        "command": "run-ai.listWorkloads",
+        "title": "Run:AI: List All Workloads"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "runai",
+          "title": "Run:AI",
+          "icon": "resources/runai-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "runai": [
+        {
+          "id": "runaiWorkloads",
+          "name": "Workloads"
+        },
+        {
+          "id": "runaiProjects",
+          "name": "Projects"
+        },
+        {
+          "id": "runaiClusters",
+          "name": "Clusters"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "run-ai.refreshWorkloads",
+          "when": "view == runaiWorkloads",
+          "group": "navigation"
+        },
+        {
+          "command": "run-ai.submitWorkspace",
+          "when": "view == runaiWorkloads",
+          "group": "navigation"
+        },
+        {
+          "command": "run-ai.submitTraining",
+          "when": "view == runaiWorkloads",
+          "group": "navigation"
+        },
+        {
+          "command": "run-ai.refreshProjects",
+          "when": "view == runaiProjects",
+          "group": "navigation"
+        },
+        {
+          "command": "run-ai.refreshClusters",
+          "when": "view == runaiClusters",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "run-ai.deleteWorkload",
+          "when": "view == runaiWorkloads && viewItem == workload",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.104.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.36.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
+}
